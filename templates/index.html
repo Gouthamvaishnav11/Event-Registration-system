@@ -1,0 +1,108 @@
+<!-- Index page will inherit the content from parent.html template -->
+{% extends 'parent.html' %}
+
+<!-- writing the code for title block -->
+{% block title %}
+
+<title>Home</title>
+
+{% endblock title %}
+
+<!-- This will contain the main part of the page -->
+{% block main %}
+<main>
+    <div class="container mt-5">
+        <h1 class="text-center">Register for an Event</h1>
+        <form method="POST" action="/">
+            <div class="mb-3">
+                <label for="event" class="form-label">Event</label>
+                <select id="event" class="form-select" name="event_name">
+                    <option selected>Select an event</option>
+                    <!-- List of Events -->
+                    <option value="Tech Conference 2024">Tech Conference 2024</option>
+                    <option value="AI & Machine Learning Workshop">AI & Machine Learning Workshop</option>
+                    <option value="Cybersecurity Fundamentals Seminar">Cybersecurity Fundamentals Seminar</option>
+                    <option value="Web Development Bootcamp">Web Development Bootcamp</option>
+                    <option value="Data Science with Python">Data Science with Python</option>
+                    <option value="Cloud Computing Essentials">Cloud Computing Essentials</option>
+                    <option value="Blockchain Technology Overview">Blockchain Technology Overview</option>
+                    <option value="Mobile App Development Hackathon">Mobile App Development Hackathon</option>
+                    <option value="UI/UX Design Masterclass">UI/UX Design Masterclass</option>
+                    <option value="Startup Pitch Day">Startup Pitch Day</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="date" class="form-label">Event Date</label>
+                <input type="text" class="form-control" id="date" name="date" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" required>
+                <small class="form-text text-muted">Please enter the date in the format dd/mm/yyyy.</small>
+            </div>
+            
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+    
+    <div class="card">
+        <div class="card-header">
+            Event register List
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">SNO</th>
+                        <th scope="col">Event_name</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">PhoneNumber</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   {% for member in alldetails %}
+                    <tr>
+                        <th scope="row">{{member.sno}}</th>
+                        <td>{{member.event_name}}</td>
+                        <td>{{member.date}}</td>
+                        <td>{{member.name}}</td>
+                        <td>{{member.email}}</td>
+                        <td>{{member.phone}}</td>
+                        <td>
+                           <a href="/update?sno={{member.sno}}" ><button class="btn btn-primary">Update</button></a>
+                           <a href="/delete?sno={{member.sno}}" ><button class="btn btn-secondary">Delete</button></a>
+                        </td>
+                    </tr>
+                
+
+                    {% endfor %}
+
+                </tbody>
+            </table> 
+        </div>  
+    </div>    
+ </div>
+
+
+    
+
+
+
+
+   
+           
+</main>
+
+{% endblock main %}
+
+

@@ -1,0 +1,56 @@
+<!-- Index page will inherit the content from parent.html template -->
+{% extends 'parent.html' %}
+
+<!-- writing the code for title block -->
+{% block title %}
+
+<title>update</title>
+
+{% endblock title %}
+
+<!-- This will contain the main part of the page -->
+{% block main %}
+<main>
+    <div class="container mt-5">
+        <h1>Update Details</h1>
+        <form method="POST" action="/update?sno={{ reqdetails.sno }}">
+            <div class="mb-3">
+                <label for="event" class="form-label">Event</label>
+                <select id="event" class="form-select" name="event_name" value="{{ reqdetails.event_name }}">
+                    <option selected>Select an event</option>
+                    <!-- List of Events -->
+                    <option value="Tech Conference 2024">Tech Conference 2024</option>
+                    <option value="AI & Machine Learning Workshop">AI & Machine Learning Workshop</option>
+                    <option value="Cybersecurity Fundamentals Seminar">Cybersecurity Fundamentals Seminar</option>
+                    <option value="Web Development Bootcamp">Web Development Bootcamp</option>
+                    <option value="Data Science with Python">Data Science with Python</option>
+                    <option value="Cloud Computing Essentials">Cloud Computing Essentials</option>
+                    <option value="Blockchain Technology Overview">Blockchain Technology Overview</option>
+                    <option value="Mobile App Development Hackathon">Mobile App Development Hackathon</option>
+                    <option value="UI/UX Design Masterclass">UI/UX Design Masterclass</option>
+                    <option value="Startup Pitch Day">Startup Pitch Day</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="date" class="form-label">Event Date</label>
+                <input type="text" class="form-control" id="date" name="date" value="{{ reqdetails.date }}" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" required>
+                <small class="form-text text-muted">Please enter the date in the format dd/mm/yyyy.</small>
+            </div>
+            
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ reqdetails.name }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ reqdetails.email }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" name="phone" value="{{ reqdetails.phone }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+</main>
+{% endblock main %}
