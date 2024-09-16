@@ -1,4 +1,4 @@
-Goutham's CodeAlpha Internship Tasks This project highlights my work, skills, and projects in Python programming and development.
+This project highlights my work, skills, and projects in Python programming and development.
 
 Project Overview The Event Registration system website is built using the Flask web framework and showcases my expertise in Python, web development, and database management. The frontend is crafted with HTML and Bootstrap,css, while the backend leverages SQLAlchemy ORM for database operations.
 
